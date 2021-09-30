@@ -1,13 +1,7 @@
-from django.contrib import admin
 from django.urls import path, include
-from django.contrib.staticfiles.urls import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from . import settings
+from .views import Create,resultfunc
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('rakutenapp.urls')),
+    path('', Create.as_view(),name='home'),
+    path('result/',resultfunc,name='result'),
 ]
-
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
